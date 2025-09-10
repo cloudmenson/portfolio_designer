@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import SplitText from "@/shared/ui/split-text";
+import CurvedLoop from "@/shared/ui/curved-loop";
+import { Prism } from "@/shared/ui/prisma-background";
 
 export const Hero = () => {
   const scope = useRef<HTMLDivElement | null>(null);
@@ -26,20 +28,21 @@ export const Hero = () => {
     <section
       ref={scope}
       id="hero-section"
-      className="relative grid min-h-[100svh] w-full place-items-center overflow-hidden bg-black/90"
+      className="relative grid min-h-[95svh] w-full place-items-center overflow-visible bg-black/90"
     >
-      <video
-        loop
-        muted
-        autoPlay
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="/video.mp4" type="video/mp4" />
-        {`Don't support`}
-      </video>
+      <Prism
+        glow={1}
+        noise={0}
+        scale={3.6}
+        height={3.5}
+        hueShift={0}
+        timeScale={0.5}
+        baseWidth={5.5}
+        colorFrequency={1}
+        animationType="rotate"
+      />
 
-      <div className="relative z-10 mx-auto w-full px-6 text-center flex justify-center">
+      <div className="relative z-10 mx-auto w-full text-center flex justify-center">
         <h1 className="select-none leading-[1.2] text-white max-w-6xl flex flex-col [text-wrap:balance] text-8xl">
           <SplitText
             delay={50}
@@ -88,6 +91,15 @@ export const Hero = () => {
           )}
         </h1>
       </div>
+
+      <CurvedLoop
+        speed={3}
+        curveAmount={0}
+        direction="left"
+        interactive={true}
+        containerClassName="curved-loop"
+        marqueeText="Be ✦ Creative ✦ With ✦ React ✦ Bits ✦"
+      />
     </section>
   );
 };

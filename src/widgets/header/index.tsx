@@ -12,10 +12,10 @@ interface IHeader {
 export const Header = ({ setOpenModal }: IHeader) => {
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-white/8 bg-transparent backdrop-blur-sm">
-      <div className="relative flex items-center justify-between px-6 py-4">
+      <div className="relative flex items-center justify-between px-15 py-4">
         <Link
           href="#"
-          className="text-base uppercase tracking-widest text-[#808080] transition-colors duration:200 hover:text-white px-2 py-1"
+          className="text-base uppercase tracking-widest text-[#808080] transition-colors duration:200 hover:text-white"
         >
           Home/
         </Link>
@@ -24,7 +24,7 @@ export const Header = ({ setOpenModal }: IHeader) => {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center"
           onClick={() => setOpenModal(true)}
         >
-          <div className="grid grid-cols-2 gap-2 duration-300 hover:rotate-45">
+          <div className="select-none cursor-pointer grid grid-cols-2 gap-2 duration-300 hover:rotate-45">
             {Array.from({ length: 4 }).map((_, idx) => (
               <Circle key={idx} className="text-white fill-white" size={5} />
             ))}

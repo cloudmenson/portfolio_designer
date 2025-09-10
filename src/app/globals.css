@@ -60,3 +60,9 @@ body {
   width: auto;
   height: auto;
 }
+
+.curved-loop {
+  position: absolute;
+  bottom: -10em;
+  left: 0;
+}

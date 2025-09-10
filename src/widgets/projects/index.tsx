@@ -2,15 +2,50 @@
 
 import { useRef, useMemo, useEffect } from "react";
 import gsap from "gsap";
-import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Card } from "@/shared/ui/cards/card";
+import { BentoCardProps } from "@/shared/ui/magic-bento";
 import { projects, IProjects } from "@/shared/data/projects";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, Flip);
-}
+const cardData: BentoCardProps[] = [
+  {
+    color: "#060010",
+    title: "Analytics",
+    description: "Track user behavior",
+    label: "Insights",
+  },
+  {
+    color: "#060010",
+    title: "Dashboard",
+    description: "Centralized data view",
+    label: "Overview",
+  },
+  {
+    color: "#060010",
+    title: "Collaboration",
+    description: "Work together seamlessly",
+    label: "Teamwork",
+  },
+  {
+    color: "#060010",
+    title: "Automation",
+    description: "Streamline workflows",
+    label: "Efficiency",
+  },
+  {
+    color: "#060010",
+    title: "Integration",
+    description: "Connect favorite tools",
+    label: "Connectivity",
+  },
+  {
+    color: "#060010",
+    title: "Security",
+    description: "Enterprise-grade protection",
+    label: "Protection",
+  },
+];
 
 export const PortfolioGrid = ({
   items = projects,
@@ -117,7 +152,7 @@ export const PortfolioGrid = ({
     <section
       ref={root}
       id="projects-section"
-      className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8 lg:pt-32 lg:pb-28"
+      className="relative mx-auto max-w-7xl lg:pt-60 lg:pb-28 px-15"
     >
       <h2 className="mb-8 md:mb-10 flex items-end text-3xl leading-none uppercase md:text-7xl max-w-xs font-extrabold tracking-tight text-white">
         Latest portfolio

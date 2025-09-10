@@ -1,43 +1,43 @@
-"use client";
+'use client';
 
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText as GSAPSplitText } from "gsap/SplitText";
-import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
 
 export interface SplitTextProps {
   text: string;
-  className?: string;
   delay?: number;
   duration?: number;
-  ease?: string | ((t: number) => number);
-  splitType?: "chars" | "words" | "lines" | "words, chars";
-  from?: gsap.TweenVars;
-  to?: gsap.TweenVars;
+  className?: string;
   threshold?: number;
+  to?: gsap.TweenVars;
   rootMargin?: string;
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-  textAlign?: React.CSSProperties["textAlign"];
+  from?: gsap.TweenVars;
   onLetterAnimationComplete?: () => void;
+  ease?: string | ((t: number) => number);
+  textAlign?: React.CSSProperties["textAlign"];
+  splitType?: "chars" | "words" | "lines" | "words, chars";
+  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
   text,
-  className = "",
+  tag = "p",
   delay = 100,
+  className = "",
   duration = 0.6,
+  threshold = 0.1,
   ease = "power3.out",
   splitType = "chars",
-  from = { opacity: 0, y: 40 },
-  to = { opacity: 1, y: 0 },
-  threshold = 0.1,
-  rootMargin = "-100px",
-  tag = "p",
   textAlign = "center",
+  rootMargin = "-100px",
+  to = { opacity: 1, y: 0 },
   onLetterAnimationComplete,
+  from = { opacity: 0, y: 40 },
 }) => {
   const ref = useRef<HTMLParagraphElement>(null);
   const animationCompletedRef = useRef(false);

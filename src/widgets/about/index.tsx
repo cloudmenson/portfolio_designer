@@ -74,11 +74,11 @@ export const About = ({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full mb-[10vw]"
+      className="relative w-full mb-[10vw] px-15"
       aria-label="More about Marta Kozerema isolate"
     >
       <div ref={stageRef} className="relative min-h-screen">
-        <div className="absolute inset-0 z-10 flex items-center justify-center px-6 mb-[30vh]">
+        <div className="absolute inset-0 z-10 flex items-center justify-center mb-[30vh]">
           <h2
             ref={titleRef}
             className="pointer-events-none uppercase will-change-transform text-center font-bold tracking-tight text-balance text-5xl max-w-4xl -translate-y-[18vh] md:text-6xl lg:text-7xl"
