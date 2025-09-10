@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollFloat from "@/shared/ui/scroll-float";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -19,9 +20,12 @@ export const Footer = () => {
         Marta
       </ScrollFloat>
 
-      <p className="cursor-pointer font-semibold transition duration:300 uppercase lg:text-3xl">
+      <Link
+        href="#"
+        className="cursor-pointer font-semibold transition duration:300 uppercase lg:text-3xl"
+      >
         Back to TOP
-      </p>
+      </Link>
     </div>
   );
 };
