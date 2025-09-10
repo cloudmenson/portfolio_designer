@@ -10,8 +10,8 @@ import { Loader } from "@/shared/ui/loader";
 import { PortfolioGrid } from "@/widgets/projects";
 import test from "@/shared/assets/png/creator.jpg";
 import { Cooperation } from "@/widgets/cooperation";
-import CircularText from "@/shared/ui/circular-text";
-import MainModal from "@/shared/ui/modals/main-modal";
+// import CircularText from "@/shared/ui/circular-text";
+// import MainModal from "@/shared/ui/modals/main-modal";
 
 const navItems = [
   { label: "Works", href: "#works" },
@@ -54,12 +54,12 @@ export default function Home() {
               onClose={() => setOpenModal(false)}
             /> */}
 
-            <CircularText
+            {/* <CircularText
               onHover="speedUp"
               spinDuration={20}
               text="MARTA*KOZEREMA*"
               className="circular-text"
-            />
+            /> */}
           </main>
         </React.Fragment>
       )}
