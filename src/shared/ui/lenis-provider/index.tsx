@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
@@ -10,8 +10,7 @@ interface ILenisProvider {
 export const LenisProvider = ({ children }: ILenisProvider) => {
   useEffect(() => {
     const lenis = new Lenis({
-      // Чем меньше lerp — тем длиннее инерция (более «накатанная»)
-      lerp: 0.085,
+      lerp: 0.050,
       smoothWheel: true,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.0,
@@ -24,7 +23,6 @@ export const LenisProvider = ({ children }: ILenisProvider) => {
     };
     rafId = requestAnimationFrame(raf);
 
-    // Если в проекте используется GSAP ScrollTrigger — синхронизируем
     try {
       if (ScrollTrigger?.update) {
         lenis.on("scroll", ScrollTrigger.update);

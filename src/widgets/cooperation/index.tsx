@@ -45,9 +45,9 @@ export const Cooperation = ({}) => {
         </FilledLink>
 
         <Image
+          alt="Error"
           ref={imageRef}
           src={illustation}
-          alt="Error"
           className="pointer-events-none"
         />
 
