@@ -14,7 +14,7 @@ export const Footer = () => {
         ease="back.inOut(2)"
         animationDuration={1}
         scrollEnd="bottom bottom-=40%"
-        scrollStart="center bottom+=50%"
+        scrollStart="center bottom+=60%"
         textClassName="uppercase font-semibold text-[12vw]"
       >
         Marta
@@ -22,7 +22,7 @@ export const Footer = () => {
 
       <Link
         href="#"
-        className="cursor-pointer font-semibold transition duration:300 uppercase lg:text-3xl"
+        className="cursor-pointer font-semibold transition duration:300 hover:underline uppercase lg:text-3xl"
       >
         Back to TOP
       </Link>

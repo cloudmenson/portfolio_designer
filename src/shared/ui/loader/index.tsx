@@ -1,129 +1,110 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import gsap from "gsap";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
-const COLORS = ["#fff", "#fff", "#fff", "#fff"];
+export const Loader = ({ isVisible, setIsVisible }) => {
+  const loaderRef = useRef<HTMLDivElement>(null);
+  const dropsRef = useRef<HTMLDivElement[]>([]);
 
-const Circle = ({
-  size = 5,
-  color = "#fff",
-}: {
-  size?: number;
-  color?: string;
-}) => (
-  <div
-    style={{
-      width: `${size}px`,
-      height: `${size}px`,
-      backgroundColor: color,
-      borderRadius: "50%",
-      display: "block",
-    }}
-  />
-);
+  const NUM_DROPS = 5;
 
-export const Loader = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState([false, false, false, false]);
+  const fixedPositions = [
+    { x: window.innerWidth * 0, y: window.innerHeight * 0.1, size: 50 },
+    { x: window.innerWidth * 0.3, y: window.innerHeight * 0.6, size: 100 },
+    { x: window.innerWidth * 0.5, y: window.innerHeight * 0.3, size: 150 },
+    { x: window.innerWidth * 0.7, y: window.innerHeight * 1, size: 50 },
+    { x: window.innerWidth * 0.85, y: window.innerHeight * 0.2, size: 40 },
+    { x: window.innerWidth * 0.6, y: window.innerHeight * 0.7, size: 70 },
+  ];
 
   useEffect(() => {
-    // Поява кружечків по одному
-    show.forEach((_, idx) => {
-      setTimeout(() => {
-        setShow((prev) => {
-          const copy = [...prev];
-          copy[idx] = true;
-          return copy;
-        });
-      }, idx * 200); // за 1 секунду всі з'являться
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const drops = dropsRef.current;
+
+    drops.forEach((drop, index) => {
+      const posX = fixedPositions[index]?.x || 0;
+      const posY = fixedPositions[index]?.y || 0;
+      const size = fixedPositions[index]?.size || 200;
+
+      gsap.set(drop, {
+        scale: 0,
+        top: posY,
+        left: posX,
+        opacity: 1,
+        width: size,
+        height: size,
+        xPercent: -50,
+        yPercent: -50,
+        borderRadius: "50%",
+        position: "absolute",
+        backgroundColor: "#fff",
+      });
+
+      gsap.to(drop, {
+        scale: 1,
+        delay: 500,
+        duration: 1,
+        ease: "power1.out",
+      });
     });
+
+    const timer = setTimeout(() => {
+      if (loaderRef.current) {
+        drops.forEach((drop) => {
+          gsap.to(drop, {
+            scale: 50,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power2.inOut",
+          });
+        });
+
+        gsap.to(loaderRef.current, {
+          opacity: 0,
+          delay: 0.5,
+          duration: 1,
+          ease: "power2.inOut",
+          onComplete: () => setIsVisible(false),
+        });
+      }
+    }, 800);
+
+    return () => {
+      clearTimeout(timer);
+
+      document.body.style.overflow = originalOverflow;
+    };
   }, []);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const circles = containerRef.current.querySelectorAll("div");
-
-    const tl = gsap.timeline({ delay: 0.8 }); // чекаємо поки всі кружечки з'являться
-
-    // Анімація контейнера: обертання і масштабування
-    tl.to(containerRef.current, {
-      rotation: 360,
-      scale: 2,
-      duration: 0.8,
-      ease: "power2.out",
-    }).to(containerRef.current, {
-      scale: 1,
-      width: 10,
-      height: 10,
-      duration: 0.8,
-      ease: "power2.inOut",
-    });
-
-    // Підняття кружечків до верхньої частини екрану з плавним обертанням
-    tl.to(
-      circles,
-      {
-        y: -500, // підйом вгору
-        width: 10,
-        height: 10,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power2.out",
-      },
-      "-=0.8"
-    )
-      // Анімація збільшення відстані між кружечками (gap)
-      .to(
-        containerRef.current,
-        {
-          gridGap: "0.5rem",
-          duration: 1,
-          ease: "power2.out",
-          onUpdate: function () {
-            if (containerRef.current) {
-              containerRef.current.style.gap = this.targets()[0].style.gridGap;
-            }
-          },
-        },
-        "-=1"
-      );
-  }, [show]);
+  if (!isVisible) return null;
 
   return (
     <div
-      className="relative flex items-center justify-center h-screen bg-black"
+      ref={loaderRef}
+      className="fixed inset-0 z-[99999999] flex items-center justify-center bg-black overflow-hidden"
       style={{
+        backgroundImage: `linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.08) 1px,
+          transparent 1px
+        ),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)`,
         backgroundSize: "25% 25%",
         backgroundRepeat: "repeat",
-        backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)`,
       }}
     >
-      <div
-        ref={containerRef}
-        style={{
-          top: "50%",
-          gap: "4px",
-          left: "50%",
-          width: "18px",
-          height: "18px",
-          display: "grid",
-          position: "absolute",
-          transform: "translate(-50%, -50%)",
-          gridTemplateRows: "repeat(2, 1fr)",
-          gridTemplateColumns: "repeat(2, 1fr)",
-        }}
-      >
-        {Array.from({ length: 4 }).map((_, idx) =>
-          show[idx] ? (
-            <Circle key={idx} color={COLORS[idx]} />
-          ) : (
-            <div key={idx} />
-          )
-        )}
-      </div>
+      {[...Array(NUM_DROPS)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute"
+          ref={(el) => {
+            if (el) dropsRef.current[i] = el;
+          }}
+        />
+      ))}
     </div>
   );
 };

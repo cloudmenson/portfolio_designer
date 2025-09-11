@@ -98,7 +98,7 @@ export const Hero = () => {
         direction="left"
         interactive={true}
         containerClassName="curved-loop"
-        marqueeText="Be ✦ Creative ✦ With ✦ React ✦ Bits ✦"
+        marqueeText="A ✦ Designer ✦ who ✦ loves ✦ creating ✦ immersive ✦ experiences"
       />
     </section>
   );
