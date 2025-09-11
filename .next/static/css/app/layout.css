@@ -779,9 +779,6 @@
   .hidden {
     display: none;
   }
-  .inline {
-    display: inline;
-  }
   .inline-block {
     display: inline-block;
   }
@@ -1734,10 +1731,11 @@ body {
 }
 .circular-text {
   position: fixed;
-  bottom: 5%;
+  bottom: 3%;
   left: 3%;
   width: 150px;
   height: 150px;
+  user-select: none;
 }
 .circular-text span {
   width: auto;
@@ -1745,7 +1743,7 @@ body {
 }
 .curved-loop {
   position: absolute;
-  bottom: -10em;
+  bottom: -8em;
   left: 0;
 }
 @property --tw-translate-x {

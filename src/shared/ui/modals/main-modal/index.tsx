@@ -8,6 +8,7 @@ import { Circle } from "lucide-react";
 import { SocialRow } from "../../social-row";
 import { FilledLink } from "../../filled-link";
 import DarkVeil from "../../dark-veil-background";
+import CircularText from "../../circular-text";
 
 export type ModalItem = { label: string; href: string };
 
@@ -135,10 +136,13 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
             ))}
           </nav>
 
-          <div className="relative w-full items-center justify-between flex flex-wrap gap-6 text-white text-sm">
-            <span className="text-base font-medium uppercase">
-              ©2025 All rights reserved
-            </span>
+          <div className="relative w-full items-center justify-end flex flex-wrap gap-6 text-white text-sm">
+            <CircularText
+              onHover="speedUp"
+              spinDuration={20}
+              text="*Marta*Kozerema"
+              className="circular-text mx-auto"
+            />
 
             <SocialRow />
           </div>

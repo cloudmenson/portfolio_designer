@@ -41,19 +41,12 @@ export default function Home() {
         <Cooperation />
 
         <Footer />
-        {/* 
-            <MainModal
-              open={openModal}
-              items={navItems}
-              onClose={() => setOpenModal(false)}
-            /> */}
 
-        {/* <CircularText
-              onHover="speedUp"
-              spinDuration={20}
-              text="MARTA*KOZEREMA*"
-              className="circular-text"
-            /> */}
+        <MainModal
+          open={openModal}
+          items={navItems}
+          onClose={() => setOpenModal(false)}
+        />
       </main>
     </>
   );
