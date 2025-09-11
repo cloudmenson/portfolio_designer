@@ -7,8 +7,8 @@ import { Circle } from "lucide-react";
 
 import { SocialRow } from "../../social-row";
 import { FilledLink } from "../../filled-link";
-import DarkVeil from "../../dark-veil-background";
 import CircularText from "../../circular-text";
+import DarkVeil from "../../dark-veil-background";
 
 export type ModalItem = { label: string; href: string };
 
@@ -34,6 +34,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
       const tl = gsap.timeline();
 
       gsap.set(sheet, { y: "100%", opacity: 0 });
+
       tl.set(backdrop, { opacity: 0, pointerEvents: "auto" }).set(content, {
         opacity: 0,
       });
@@ -49,6 +50,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
       const onEsc = (e: KeyboardEvent) => {
         if (e.key === "Escape") onClose();
       };
+
       window.addEventListener("keydown", onEsc);
 
       return () => {

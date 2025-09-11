@@ -70,7 +70,7 @@ export const Loader = ({ isVisible, setIsVisible }) => {
           onComplete: () => setIsVisible(false),
         });
       }
-    }, 800);
+    }, 200);
 
     return () => {
       clearTimeout(timer);

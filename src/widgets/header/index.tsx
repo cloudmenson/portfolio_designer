@@ -14,7 +14,7 @@ export const Header = ({ setOpenModal }: IHeader) => {
     <header className="fixed top-0 left-0 z-50 w-full border-b border-white/8 bg-transparent backdrop-blur-sm">
       <div className="relative flex items-center justify-between px-15 py-4">
         <Link
-          href="#"
+          href="/"
           className="text-base uppercase tracking-widest text-[#808080] transition-colors duration:200 hover:text-white"
         >
           Home/
