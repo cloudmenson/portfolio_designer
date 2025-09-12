@@ -37,7 +37,7 @@ export default function ProjectByIdPage({ params }: Props) {
 
       <Header setOpenModal={setOpenModal} />
 
-      <ProjectById projectData={projectData} />
+      <ProjectById projectData={projectData!} />
 
       <MainModal
         open={openModal}
