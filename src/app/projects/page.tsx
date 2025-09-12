@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
 import { Header } from "@/widgets/header";
 import { Loader } from "@/shared/ui/loader";

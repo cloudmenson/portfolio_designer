@@ -32,13 +32,14 @@ export const Hero = () => {
     >
       <Prism
         glow={1}
-        noise={0}
+        height={4}
+        bloom={0.6}
         scale={3.6}
-        height={3.5}
+        noise={0.01}
         hueShift={0}
+        baseWidth={4}
         timeScale={0.5}
-        baseWidth={5.5}
-        colorFrequency={1}
+        colorFrequency={0.5}
         animationType="rotate"
       />
 

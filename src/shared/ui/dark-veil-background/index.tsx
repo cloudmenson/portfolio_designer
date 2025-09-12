@@ -84,7 +84,7 @@ type Props = {
 };
 
 export default function DarkVeil({
-  speed = 1.5,
+  speed = 0.6,
   hueShift = 0,
   warpAmount = 0,
   noiseIntensity = 0,

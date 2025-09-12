@@ -5,47 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Card } from "@/shared/ui/cards/card";
-import { BentoCardProps } from "@/shared/ui/magic-bento";
 import { projects, IProjects } from "@/shared/data/projects";
-
-const cardData: BentoCardProps[] = [
-  {
-    color: "#060010",
-    title: "Analytics",
-    description: "Track user behavior",
-    label: "Insights",
-  },
-  {
-    color: "#060010",
-    title: "Dashboard",
-    description: "Centralized data view",
-    label: "Overview",
-  },
-  {
-    color: "#060010",
-    title: "Collaboration",
-    description: "Work together seamlessly",
-    label: "Teamwork",
-  },
-  {
-    color: "#060010",
-    title: "Automation",
-    description: "Streamline workflows",
-    label: "Efficiency",
-  },
-  {
-    color: "#060010",
-    title: "Integration",
-    description: "Connect favorite tools",
-    label: "Connectivity",
-  },
-  {
-    color: "#060010",
-    title: "Security",
-    description: "Enterprise-grade protection",
-    label: "Protection",
-  },
-];
 
 export const PortfolioGrid = ({
   items = projects,
@@ -128,13 +88,16 @@ export const PortfolioGrid = ({
             duration: 0.5,
             ease: "power3.out",
           });
+
           gsap.to(card, {
             rotateX: 0,
             rotateY: 0,
             duration: 0.6,
             ease: "power3.out",
           });
+
           gsap.to(content, { y: 0, duration: 0.35, ease: "power2.out" });
+
           window.dispatchEvent(new CustomEvent("cursor-normal"));
         };
         card.addEventListener("mousemove", onMove);

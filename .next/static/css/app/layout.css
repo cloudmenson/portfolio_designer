@@ -1598,6 +1598,26 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+  .lg\:pt-10 {
+    @media (width >= 64rem) {
+      padding-top: calc(var(--spacing) * 10);
+    }
+  }
+  .lg\:pt-20 {
+    @media (width >= 64rem) {
+      padding-top: calc(var(--spacing) * 20);
+    }
+  }
+  .lg\:pt-40 {
+    @media (width >= 64rem) {
+      padding-top: calc(var(--spacing) * 40);
+    }
+  }
+  .lg\:pt-50 {
+    @media (width >= 64rem) {
+      padding-top: calc(var(--spacing) * 50);
+    }
+  }
   .lg\:pt-60 {
     @media (width >= 64rem) {
       padding-top: calc(var(--spacing) * 60);

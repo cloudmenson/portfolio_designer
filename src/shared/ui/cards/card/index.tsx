@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 
 import { cn } from "@/shared/lib/utils/cn";
@@ -14,7 +15,8 @@ type Item = {
 };
 
 export const Card = ({ item }: { item: Item }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLAnchorElement | null>(null);
+  console.log({ itemNew: item });
 
   const spans = cn(
     item.span === "big" && "sm:col-span-2 lg:col-span-2 lg:row-span-2",
@@ -23,10 +25,11 @@ export const Card = ({ item }: { item: Item }) => {
   );
 
   return (
-    <div
+    <Link
       data-card
-      data-tag={item.tag}
       ref={ref}
+      data-tag={item.tag}
+      href={`projects/${item.id}`}
       className={cn(
         "group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10",
         "backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]",
@@ -42,6 +45,7 @@ export const Card = ({ item }: { item: Item }) => {
           priority={false}
           className="object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity"
         />
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
       </div>
 
@@ -54,12 +58,13 @@ export const Card = ({ item }: { item: Item }) => {
             {item.tag}
           </span>
         </div>
+
         <h3 className="mt-2 text-xl md:text-2xl font-semibold text-white drop-shadow">
           {item.title}
         </h3>
       </div>
 
       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 ring-emerald-400/0 group-hover:ring-2 group-hover:ring-emerald-400/40 transition-all" />
-    </div>
+    </Link>
   );
 };
