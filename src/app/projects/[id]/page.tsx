@@ -8,18 +8,12 @@ import ProjectById from "@/widgets/project-by-id";
 import { projects } from "@/shared/data/projects";
 import MainModal from "@/shared/ui/modals/main-modal";
 
-type Props = {
-  params: {
-    id: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-export default function ProjectByIdPage({ params }: Props) {
+export default function ProjectByIdPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const projectData = projects.find((p) => String(p.id) === params.id);
-
-  const [isVisible, setIsVisible] = useState(true);
-  const [openModal, setOpenModal] = useState(false);
 
   if (!projectData) {
     return (
@@ -29,6 +23,9 @@ export default function ProjectByIdPage({ params }: Props) {
     );
   }
 
+  const [isVisible, setIsVisible] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <>
       {isVisible && (
@@ -37,7 +34,7 @@ export default function ProjectByIdPage({ params }: Props) {
 
       <Header setOpenModal={setOpenModal} />
 
-      <ProjectById projectData={projectData!} />
+      <ProjectById projectData={projectData} />
 
       <MainModal
         open={openModal}
