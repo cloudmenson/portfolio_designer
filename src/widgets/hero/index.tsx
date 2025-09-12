@@ -48,7 +48,7 @@ export const Hero = () => {
       </div>
 
       <div className="relative z-10 mx-auto w-full text-center flex justify-center">
-        <h1 className="select-none leading-[1.2] text-white max-w-6xl flex flex-col [text-wrap:balance] text-8xl">
+        <h1 className="select-none leading-[1.2] text-white max-w-6xl flex flex-col [text-wrap:balance] text-3xl sm:text-8xl">
           <SplitText
             delay={50}
             duration={0.1}
@@ -75,7 +75,7 @@ export const Hero = () => {
               text="A Designer who loves"
               to={{ opacity: 1, y: 0 }}
               from={{ opacity: 0, y: 24 }}
-              className="mb-2 block font-semibold"
+              className="block font-semibold"
             />
           )}
 
@@ -91,7 +91,7 @@ export const Hero = () => {
               text="animations & bold ideas!"
               to={{ opacity: 1, y: 0 }}
               from={{ opacity: 0, y: 28 }}
-              className="mt-2 block font-semibold"
+              className="block font-semibold"
             />
           )}
         </h1>
