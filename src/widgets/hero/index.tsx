@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
 import { useRef, useState, useEffect } from "react";
 
 import SplitText from "@/shared/ui/split-text";
 import CurvedLoop from "@/shared/ui/curved-loop";
 import { Prism } from "@/shared/ui/prisma-background";
+import DarkVeil from "@/shared/ui/dark-veil-background";
 
 export const Hero = () => {
   const scope = useRef<HTMLDivElement | null>(null);
@@ -30,10 +31,10 @@ export const Hero = () => {
       id="hero-section"
       className="relative grid min-h-[95svh] w-full place-items-center overflow-visible bg-black/90"
     >
-      <Prism
-        glow={1}
+      {/* <Prism
+        glow={0.5}
         height={4}
-        bloom={0.6}
+        bloom={1}
         scale={3.6}
         noise={0.01}
         hueShift={0}
@@ -41,7 +42,10 @@ export const Hero = () => {
         timeScale={0.5}
         colorFrequency={0.5}
         animationType="rotate"
-      />
+      /> */}
+      <div className="absolute inset-0 w-full h-full">
+        <DarkVeil />
+      </div>
 
       <div className="relative z-10 mx-auto w-full text-center flex justify-center">
         <h1 className="select-none leading-[1.2] text-white max-w-6xl flex flex-col [text-wrap:balance] text-8xl">
@@ -95,7 +99,7 @@ export const Hero = () => {
 
       <CurvedLoop
         speed={3}
-        curveAmount={0}
+        curveAmount={0.01}
         direction="left"
         interactive={true}
         containerClassName="curved-loop"

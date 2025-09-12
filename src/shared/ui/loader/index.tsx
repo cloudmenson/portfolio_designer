@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 export const Loader = ({ isVisible, setIsVisible }) => {
@@ -40,7 +40,7 @@ export const Loader = ({ isVisible, setIsVisible }) => {
         yPercent: -50,
         borderRadius: "50%",
         position: "absolute",
-        backgroundColor: "#fff",
+        backgroundColor: "rgb(24,4,64)",
       });
 
       gsap.to(drop, {

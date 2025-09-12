@@ -1024,9 +1024,7 @@ export default function SplashCursor({
       if (colorUpdateTimer >= 1) {
         colorUpdateTimer = wrap(colorUpdateTimer, 0, 1);
         pointers.forEach((p) => {
-          if (p.down || p.moved) {
-            p.color = generateColor();
-          }
+          p.color = generateColor();
         });
       }
     }

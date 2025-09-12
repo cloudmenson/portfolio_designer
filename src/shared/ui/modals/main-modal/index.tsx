@@ -104,7 +104,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
 
           <div className="relative flex items-center justify-between w-full">
             <Link
-              href="#"
+              href="/"
               onClick={onClose}
               className="text-base uppercase tracking-widest text-[#808080] transition-colors duration:200 hover:text-white"
             >
