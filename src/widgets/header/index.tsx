@@ -31,7 +31,7 @@ export const Header = ({ setOpenModal }: IHeader) => {
           </div>
         </div>
 
-        <FilledLink href="#">Contact now</FilledLink>
+        <FilledLink href="/contact">Contact now</FilledLink>
       </div>
     </header>
   );
