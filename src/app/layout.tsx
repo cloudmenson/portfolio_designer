@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Dancing_Script } from "next/font/google";
 
-import { Cursor } from "@/shared/ui/custom-cursor";
+// import { Cursor } from "@/shared/ui/custom-cursor";
 import SplashCursor from "@/shared/ui/splash-cursor";
 import { ClientOnly } from "@/shared/ui/client-only";
 import { LenisProvider } from "@/shared/ui/lenis-provider";
@@ -34,8 +34,8 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${dancing.variable}`}>
       <body className="antialiased">
         <ClientOnly>
-          {/* <SplashCursor /> */}
-          <Cursor />
+          <SplashCursor />
+          {/* <Cursor /> */}
 
           <LenisProvider>{children}</LenisProvider>
         </ClientOnly>

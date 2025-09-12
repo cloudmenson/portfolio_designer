@@ -16,7 +16,6 @@ type Item = {
 
 export const Card = ({ item }: { item: Item }) => {
   const ref = useRef<HTMLAnchorElement | null>(null);
-  console.log({ itemNew: item });
 
   const spans = cn(
     item.span === "big" && "sm:col-span-2 lg:col-span-2 lg:row-span-2",

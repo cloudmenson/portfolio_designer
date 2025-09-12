@@ -13,10 +13,17 @@ type Props = { params: { id: string } };
 
 export default function ProjectByIdPage({ params }: Props) {
   const projectData = projects.find((p) => String(p.id) === params.id);
-  console.log({ projectData });
 
   const [isVisible, setIsVisible] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+
+  if (!projectData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        <p>Project not found.</p>
+      </div>
+    );
+  }
 
   return (
     <>

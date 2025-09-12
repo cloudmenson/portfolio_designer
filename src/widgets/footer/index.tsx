@@ -10,7 +10,7 @@ export const Footer = () => {
       className="relative w-full isolate flex flex-col gap-[0.5vw] text-white text-center px-15"
     >
       <ScrollFloat
-        stagger={0.03}
+        stagger={0.01}
         ease="back.inOut(2)"
         animationDuration={1}
         scrollEnd="bottom bottom-=40%"
