@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Header } from "@/widgets/header";
 import { Loader } from "@/shared/ui/loader";
 import { navItems } from "@/shared/data/modal";
@@ -8,7 +9,7 @@ import ProjectById from "@/widgets/project-by-id";
 import { projects } from "@/shared/data/projects";
 import MainModal from "@/shared/ui/modals/main-modal";
 
-export default function ProjectByIdPage({
+export default async function ProjectByIdPage({
   params,
 }: {
   params: { id: string };
