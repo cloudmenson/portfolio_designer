@@ -9,11 +9,7 @@ import ProjectById from "@/widgets/project-by-id";
 import { projects } from "@/shared/data/projects";
 import MainModal from "@/shared/ui/modals/main-modal";
 
-export default async function ProjectByIdPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ProjectByIdPage({ params }) {
   const projectData = projects.find((p) => String(p.id) === params.id);
 
   if (!projectData) {
