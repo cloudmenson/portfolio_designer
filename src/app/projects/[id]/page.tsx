@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import { Header } from "@/widgets/header";
 import { Loader } from "@/shared/ui/loader";
 import { navItems } from "@/shared/data/modal";
@@ -9,7 +8,12 @@ import ProjectById from "@/widgets/project-by-id";
 import { projects } from "@/shared/data/projects";
 import MainModal from "@/shared/ui/modals/main-modal";
 
-type Props = { params: { id: string } };
+type Props = {
+  params: {
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
 export default function ProjectByIdPage({ params }: Props) {
   const projectData = projects.find((p) => String(p.id) === params.id);
