@@ -120,7 +120,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
               ))}
             </div>
 
-            <FilledLink href="#">Contact now</FilledLink>
+            <FilledLink href="/contact">Contact now</FilledLink>
           </div>
 
           <nav className="space-y-3 text-center relative">
