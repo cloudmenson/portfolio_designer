@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { SocialRow } from "@/shared/ui/social-row";
 import { FilledLink } from "@/shared/ui/filled-link";
+import { SocialLinks } from "@/shared/ui/social-links";
+import { socialLinks } from "@/shared/data/social-links";
 import illustation from "@/shared/assets/png/blog-girl.png";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -34,7 +35,10 @@ export const Cooperation = ({}) => {
   }, []);
 
   return (
-    <section aria-label="Cooperation" className="relative w-full isolate mb-[5vw] px-15">
+    <section
+      aria-label="Cooperation"
+      className="relative w-full isolate mb-[5vw] px-15"
+    >
       <div className="relative w-full h-full flex flex-col items-center justify-center text-white">
         <h2 className="pointer-events-none uppercase text-center font-bold tracking-tight text-balance text-5xl lg:mb-[3vw] max-w-3xl md:text-6xl lg:text-7xl">
           {`Let's work together`}
@@ -57,7 +61,7 @@ export const Cooperation = ({}) => {
           textures, and clear concepts.
         </p>
 
-        <SocialRow />
+        <SocialLinks socialLinks={socialLinks} />
       </div>
     </section>
   );

@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import illustation from "@/shared/assets/png/blog-girl.png"; // або твій шлях
 
 export const ContactForm = () => {
   const [name, setName] = useState("");
@@ -81,7 +79,6 @@ export const ContactForm = () => {
             )}
           </div>
 
-          {/* Email */}
           <div>
             <label htmlFor="email" className="sr-only">
               Email
@@ -102,7 +99,6 @@ export const ContactForm = () => {
             )}
           </div>
 
-          {/* Message */}
           <div>
             <label htmlFor="message" className="sr-only">
               Message
@@ -123,7 +119,6 @@ export const ContactForm = () => {
             )}
           </div>
 
-          {/* Submit big white pill */}
           <div>
             <button
               type="submit"

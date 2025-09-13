@@ -1,13 +1,15 @@
-"use client";
+'use client';
 
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import { Circle } from "lucide-react";
 
-import { SocialRow } from "../../social-row";
+import { socialLinks } from "@/shared/data/social-links";
+
 import { FilledLink } from "../../filled-link";
 import CircularText from "../../circular-text";
+import { SocialLinks } from "../../social-links";
 import DarkVeil from "../../dark-veil-background";
 
 export type ModalItem = { label: string; href: string };
@@ -146,7 +148,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
               className="circular-text mx-auto"
             />
 
-            <SocialRow />
+            <SocialLinks socialLinks={socialLinks} />
           </div>
         </div>
       </div>

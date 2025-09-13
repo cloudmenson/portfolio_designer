@@ -4,11 +4,13 @@ import { useState } from "react";
 
 import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
+import { EMAIL } from "@/shared/constants";
 import { Loader } from "@/shared/ui/loader";
 import { Contact } from "@/widgets/contact";
 import { navItems } from "@/shared/data/modal";
 import MainModal from "@/shared/ui/modals/main-modal";
-import { SocialRow } from "@/shared/ui/social-row";
+import { SocialLinks } from "@/shared/ui/social-links";
+import { socialLinks } from "@/shared/data/social-links";
 
 export default function ContactPage() {
   const [isVisible, setIsVisible] = useState(true);
@@ -22,10 +24,15 @@ export default function ContactPage() {
 
       <Header setOpenModal={setOpenModal} />
 
-      <main className="relative mb-10 mx-auto max-w-7xl py-20 lg:pt-60 px-15">
+      <main className="relative mb-10 mx-auto max-w-7xl py-20 lg:pt-40 px-15">
         <Contact />
 
-        <SocialRow />
+        <SocialLinks
+          isLabel
+          email={EMAIL}
+          className="mb-15"
+          socialLinks={socialLinks}
+        />
 
         <Footer />
 

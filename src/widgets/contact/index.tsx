@@ -18,9 +18,9 @@ export const Contact = () => {
 
     gsap.fromTo(
       imageRef.current,
-      { yPercent: 30 },
+      { yPercent: 60 },
       {
-        yPercent: -50,
+        yPercent: -35,
         ease: "none",
         scrollTrigger: {
           trigger: imageRef.current,
@@ -35,7 +35,7 @@ export const Contact = () => {
 
   return (
     <section id="contact-section" className="relative w-full h-full lg:pb-40">
-      <div className="flex flex-row items-start">
+      <div className="flex flex-row items-start gap-20">
         <div className="flex flex-col gap-2 basis-3/5">
           <h2 className="mb-8 md:mb-10 flex items-end text-3xl leading-none uppercase md:text-6xl font-extrabold tracking-tight text-white">
             Ring a bell!
@@ -49,7 +49,7 @@ export const Contact = () => {
             alt="Error"
             ref={imageRef}
             src={illustation}
-            className="pointer-events-none w-auto h-auto"
+            className="pointer-events-none w-full h-full"
           />
         </div>
       </div>

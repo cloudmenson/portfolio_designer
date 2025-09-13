@@ -763,14 +763,14 @@
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
-  .mb-2 {
-    margin-bottom: calc(var(--spacing) * 2);
-  }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
   }
   .mb-10 {
     margin-bottom: calc(var(--spacing) * 10);
+  }
+  .mb-15 {
+    margin-bottom: calc(var(--spacing) * 15);
   }
   .mb-20 {
     margin-bottom: calc(var(--spacing) * 20);
@@ -820,9 +820,6 @@
   .h-\[200px\] {
     height: 200px;
   }
-  .h-auto {
-    height: auto;
-  }
   .h-full {
     height: 100%;
   }
@@ -852,9 +849,6 @@
   }
   .w-\[min\(30vw\,540px\)\] {
     width: min(30vw, 540px);
-  }
-  .w-auto {
-    width: auto;
   }
   .w-full {
     width: 100%;
@@ -985,11 +979,17 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
+  }
   .gap-6 {
     gap: calc(var(--spacing) * 6);
   }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
+  }
+  .gap-20 {
+    gap: calc(var(--spacing) * 20);
   }
   .gap-\[0\.5vw\] {
     gap: 0.5vw;
@@ -1210,10 +1210,6 @@
   .text-5xl {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
-  }
-  .text-8xl {
-    font-size: var(--text-8xl);
-    line-height: var(--tw-leading, var(--text-8xl--line-height));
   }
   .text-base {
     font-size: var(--text-base);
@@ -1545,10 +1541,73 @@
       }
     }
   }
+  .hover\:scale-\[1\.0\.\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.0.;
+      }
+    }
+  }
+  .hover\:scale-\[1\.0\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.0;
+      }
+    }
+  }
   .hover\:scale-\[1\.1\] {
     &:hover {
       @media (hover: hover) {
         scale: 1.1;
+      }
+    }
+  }
+  .hover\:scale-\[1\.02\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.02;
+      }
+    }
+  }
+  .hover\:scale-\[1\.2\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.2;
+      }
+    }
+  }
+  .hover\:scale-\[1\.05\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.05;
+      }
+    }
+  }
+  .hover\:scale-\[1\.08\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.08;
+      }
+    }
+  }
+  .hover\:scale-\[1\.55\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.55;
+      }
+    }
+  }
+  .hover\:scale-\[1\.\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1.;
+      }
+    }
+  }
+  .hover\:scale-\[1\] {
+    &:hover {
+      @media (hover: hover) {
+        scale: 1;
       }
     }
   }
