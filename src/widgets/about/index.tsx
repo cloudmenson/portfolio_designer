@@ -56,10 +56,8 @@ export const About = ({
         defaults: { ease: "none" },
       });
 
-      tl.to(titleRef.current, { scale: 1, yPercent: 50, opacity: 1 }, 0.5)
-        .to(titleRef.current, { scale: 0.9, yPercent: 150, opacity: 0.6 }, 0.6)
-        .to(titleRef.current, { scale: 0.9, yPercent: 250, opacity: 0.2 }, 0.8)
-        .to(titleRef.current, { scale: 0.6, yPercent: 350, opacity: 0 }, 1);
+      tl.to(titleRef.current, { scale: 1, yPercent: 50, opacity: 1 }, 0.5);
+      tl.to(titleRef.current, { scale: 0.6, yPercent: 350, opacity: 1 }, 1);
 
       tl.to(
         imgMoveRef.current,
