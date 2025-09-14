@@ -15,8 +15,8 @@ import { Cooperation } from "@/widgets/cooperation";
 import MainModal from "@/shared/ui/modals/main-modal";
 
 export default function HomePage() {
-  const [openModal, setOpenModal] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <>

@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import Link from "next/link";
-
+import { gsap } from "gsap";
 import { cn } from "@/shared/lib/utils/cn";
 
 type ButtonType = "standard" | "medium" | "large";
@@ -23,72 +23,53 @@ export const FilledLink = ({
   const ref = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const fill = el.querySelector<HTMLElement>("[data-fill]");
-    if (!fill) return;
+    if (ref.current) {
+      const el = ref.current;
 
-    const setPos = (e: PointerEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      fill.style.setProperty("--cx", `${x}px`);
-      fill.style.setProperty("--cy", `${y}px`);
-      return Math.hypot(r.width, r.height);
-    };
+      const handleEnter = () => {
+        const tl = gsap.timeline();
+        tl.to(el, {
+          y: -5,
+          boxShadow: "8px 8px 0px #4c0dc6",
+          duration: 0.3,
+          ease: "power3.out",
+        });
+      };
 
-    const onEnter = (e: PointerEvent) => {
-      const R = setPos(e);
-      fill.style.setProperty("--r", "0px");
-      // kick off transition to full cover
-      requestAnimationFrame(() => {
-        fill.style.setProperty("--r", `${R}px`);
-        el.style.color = "#000";
-      });
-    };
+      const handleLeave = () => {
+        const tl = gsap.timeline();
+        tl.to(el, {
+          y: 0,
+          boxShadow: "0px 0px 0px rgba(111,111,111,1)",
+          duration: 0.3,
+          ease: "power3.inOut",
+        }).to(
+          el.querySelector("svg, span"),
+          { color: "#000000", duration: 0.3 },
+          "<"
+        );
+      };
 
-    const onLeave = (e: PointerEvent) => {
-      setPos(e);
-      fill.style.setProperty("--r", "0px");
-      el.style.color = "#fff";
-    };
-
-    el.addEventListener("pointerenter", onEnter);
-    el.addEventListener("pointerleave", onLeave);
-    el.addEventListener("pointermove", (e) => setPos(e));
-
-    return () => {
-      el.removeEventListener("pointerenter", onEnter);
-      el.removeEventListener("pointerleave", onLeave);
-      el.removeEventListener("pointermove", (e) => setPos(e));
-    };
+      el.addEventListener("mouseenter", handleEnter);
+      el.addEventListener("mouseleave", handleLeave);
+      return () => {
+        el.removeEventListener("mouseenter", handleEnter);
+        el.removeEventListener("mouseleave", handleLeave);
+      };
+    }
   }, []);
 
   const btnClass = cn(
-    "relative overflow-hidden rounded-full uppercase border-white py-2 font-semibold text-white transition-all duration-350 active:scale-90 px-2 sm:px-6",
-    type === "standard" && "text-xs sm:text-base border font-bold",
-    type === "medium" && "text-xl sm:text-4xl border-[2px] font-bold",
-    type === "large" && "text-xl sm:text-3xl border-[2px] font-bold",
+    "relative inline-flex items-center gap-2 overflow-hidden rounded-md border border-black bg-white px-2 py-3 font-bold uppercase text-black md:px-4",
+    type === "standard" && "text-sm sm:text-base",
+    type === "medium" && "text-lg sm:text-2xl",
+    type === "large" && "text-xl sm:text-3xl",
     className
   );
 
   return (
-    <Link
-      ref={ref}
-      href={href}
-      className={btnClass}
-      style={{ WebkitTapHighlightColor: "transparent" }}
-    >
-      <span className="relative z-10">{children}</span>
-
-      <span
-        data-fill
-        className="pointer-events-none absolute inset-0 rounded-full bg-white"
-        style={{
-          transition: "clip-path 250ms ease",
-          clipPath: "circle(var(--r, 0px) at var(--cx, 50%) var(--cy, 50%))",
-        }}
-      />
+    <Link ref={ref} href={href} className={btnClass}>
+      <span>{children}</span>
     </Link>
   );
 };

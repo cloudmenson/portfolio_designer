@@ -22,6 +22,12 @@ export const PortfolioGrid = ({
   const grouped = useMemo(() => items, [items]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLDivElement>("[data-card]");
 

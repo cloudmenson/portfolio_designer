@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Link from "next/link";
-import { Circle } from "lucide-react";
+import { Circle, X } from "lucide-react";
 
 import { socialLinks } from "@/shared/data/social-links";
 
@@ -115,11 +115,9 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
 
             <div
               onClick={onClose}
-              className="cursor-pointer absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-2 gap-2 duration-300 hover:rotate-45"
+              className="p-2 cursor-pointer absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 duration-300 hover:rotate-45 bg-[#6666667d] rounded-full"
             >
-              {Array.from({ length: 4 }).map((_, idx) => (
-                <Circle key={idx} className="text-white fill-white" size={5} />
-              ))}
+              <X className="w-8 h-8 text-white" />
             </div>
 
             <FilledLink href="/contact">Contact now</FilledLink>
