@@ -84,7 +84,7 @@ export const Loader = ({ isVisible, setIsVisible }) => {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 z-[99999999] flex items-center justify-center bg-black overflow-hidden"
+      className="fixed inset-0 z-[99999999] min-h-[100dvh] flex items-center justify-center bg-black overflow-hidden"
       style={{
         backgroundImage: `linear-gradient(
           to right,

@@ -91,15 +91,15 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
       <div
         ref={backdropRef}
         onClick={onClose}
-        className="fixed inset-0 z-[60] bg-black/75 opacity-0 pointer-events-none"
+        className="fixed inset-0 z-[60] min-h-[100dvh] bg-black/75 opacity-0 pointer-events-none"
       />
 
       <div
         ref={sheetRef}
         aria-label="Navigation"
-        className="fixed inset-0 h-screen w-full z-[61] bg-black/90 backdrop-blur-xl"
+        className="fixed inset-0 h-full w-full z-[61] bg-black/90 backdrop-blur-xl"
       >
-        <div className="absolute inset-0 w-full h-screen -z-10">
+        <div className="absolute inset-0 w-full h-full -z-10">
           <DarkVeil />
         </div>
 
