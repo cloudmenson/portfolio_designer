@@ -11,8 +11,8 @@ import { navItems } from "@/shared/data/modal";
 import { projects } from "@/shared/data/projects";
 import { PortfolioGrid } from "@/widgets/projects";
 import test from "@/shared/assets/png/creator.jpg";
-import MainModal from "@/shared/ui/modals/main-modal";
 import { Cooperation } from "@/widgets/cooperation";
+import MainModal from "@/shared/ui/modals/main-modal";
 
 export default function HomePage() {
   const [openModal, setOpenModal] = useState(false);

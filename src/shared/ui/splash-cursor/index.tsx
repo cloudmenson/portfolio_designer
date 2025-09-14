@@ -1,4 +1,5 @@
 "use client";
+import { useIsMobile } from "@/shared/hooks/useIsMobile";
 import React, { useEffect, useRef } from "react";
 
 interface ColorRGB {
@@ -1508,6 +1509,12 @@ export default function SplashCursor({
     BACK_COLOR,
     TRANSPARENT,
   ]);
+
+  const isMobile = useIsMobile(768);
+
+  if(isMobile) {
+    return null;
+  }
 
   return (
     <div className="fixed top-0 left-0 z-50 pointer-events-none w-full h-full">
