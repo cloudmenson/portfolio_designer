@@ -1512,8 +1512,8 @@ export default function SplashCursor({
 
   const isMobile = useIsMobile(768);
 
-  if(isMobile) {
-    return null;
+  if (isMobile) {
+    return;
   }
 
   return (
