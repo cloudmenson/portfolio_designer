@@ -65,10 +65,10 @@ export const FilledLink = ({
   }, []);
 
   const btnClass = cn(
-    "relative overflow-hidden rounded-full uppercase border-white px-6 py-2 font-semibold text-white transition-all duration-350 active:scale-90",
-    type === "standard" && "text-base border font-bold",
-    type === "medium" && "text-4xl border-[2px] font-bold",
-    type === "large" && "text-3xl border-[2px] font-bold",
+    "relative overflow-hidden rounded-full uppercase border-white py-2 font-semibold text-white transition-all duration-350 active:scale-90 px-2 sm:px-6",
+    type === "standard" && "text-xs sm:text-base border font-bold",
+    type === "medium" && "text-xl sm:text-4xl border-[2px] font-bold",
+    type === "large" && "text-xl sm:text-3xl border-[2px] font-bold",
     className
   );
 

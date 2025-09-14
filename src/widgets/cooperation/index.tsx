@@ -1,21 +1,33 @@
-'use client';
+"use client";
 
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { cn } from "@/lib/utils";
 import { FilledLink } from "@/shared/ui/filled-link";
 import { SocialLinks } from "@/shared/ui/social-links";
 import { socialLinks } from "@/shared/data/social-links";
 import illustation from "@/shared/assets/png/blog-girl.png";
+import { useIsMobile } from "@/shared/hooks/useIsMobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Cooperation = ({}) => {
+interface ICooperation {
+  className?: string;
+}
+
+export const Cooperation = ({ className }: ICooperation) => {
   const imageRef = useRef<HTMLImageElement | null>(null);
 
+  const isMobile = useIsMobile(1024);
+
   useEffect(() => {
+    if (isMobile) {
+      return;
+    }
+
     if (!imageRef.current) return;
 
     gsap.fromTo(
@@ -37,14 +49,14 @@ export const Cooperation = ({}) => {
   return (
     <section
       aria-label="Cooperation"
-      className="relative w-full isolate mb-[5vw] px-15"
+      className={cn("relative w-full isolate px-5 sm:px-15", className)}
     >
       <div className="relative w-full h-full flex flex-col items-center justify-center text-white">
-        <h2 className="pointer-events-none uppercase text-center font-bold tracking-tight text-balance text-5xl lg:mb-[3vw] max-w-3xl md:text-6xl lg:text-7xl">
+        <h2 className="pointer-events-none uppercase text-center font-bold tracking-tight max-w-3xl text-balance text-3xl md:text-6xl mb-5 sm:mb-8 md:text-7xl">
           {`Let's work together`}
         </h2>
 
-        <FilledLink className="lg:mb-[3vw]" href="#" type="large">
+        <FilledLink className="mb-5" href="#" type="large">
           Contact now
         </FilledLink>
 
@@ -52,10 +64,10 @@ export const Cooperation = ({}) => {
           alt="Error"
           ref={imageRef}
           src={illustation}
-          className="pointer-events-none"
+          className="pointer-events-none mb-5"
         />
 
-        <p className="text-2xl font-semibold uppercase max-w-5xl text-center lg:mb-[0.5vw]">
+        <p className="text-base font-semibold uppercase max-w-5xl text-center text-pretty mb-6 sm:text-2xl">
           I help brands and creators tell their stories through thoughtful,
           expressive illustrations. My style blends bold palettes, rich
           textures, and clear concepts.

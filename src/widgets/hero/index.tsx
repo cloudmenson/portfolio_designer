@@ -4,10 +4,10 @@ import { useRef, useState, useEffect } from "react";
 
 import SplitText from "@/shared/ui/split-text";
 import CurvedLoop from "@/shared/ui/curved-loop";
-import { Prism } from "@/shared/ui/prisma-background";
 import DarkVeil from "@/shared/ui/dark-veil-background";
+import { cn } from "@/lib/utils";
 
-export const Hero = () => {
+export const Hero = ({ className }) => {
   const scope = useRef<HTMLDivElement | null>(null);
 
   const [stage, setStage] = useState<1 | 2 | 3>(1);
@@ -25,30 +25,19 @@ export const Hero = () => {
     };
   }, []);
 
+  const mainClass = cn(
+    "relative grid min-h-[100svh] w-full place-items-center overflow-visible bg-black/90 px-5 sm:px-15",
+    className
+  );
+
   return (
-    <section
-      ref={scope}
-      id="hero-section"
-      className="relative grid min-h-[95svh] w-full place-items-center overflow-visible bg-black/90"
-    >
-      {/* <Prism
-        glow={0.5}
-        height={4}
-        bloom={1}
-        scale={3.6}
-        noise={0.01}
-        hueShift={0}
-        baseWidth={4}
-        timeScale={0.5}
-        colorFrequency={0.5}
-        animationType="rotate"
-      /> */}
+    <section ref={scope} id="hero-section" className={mainClass}>
       <div className="absolute inset-0 w-full h-full">
         <DarkVeil />
       </div>
 
       <div className="relative z-10 mx-auto w-full text-center flex justify-center">
-        <h1 className="select-none leading-[1.2] text-white max-w-6xl flex flex-col [text-wrap:balance] text-3xl sm:text-8xl">
+        <h1 className="select-none text-pretty text-white max-w-6xl flex flex-col [text-wrap:balance] leading-[1.4] text-3xl sm:leading-[1.2] sm:text-6xl xl:text-8xl">
           <SplitText
             delay={50}
             duration={0.1}
@@ -99,8 +88,8 @@ export const Hero = () => {
 
       <CurvedLoop
         speed={3}
-        curveAmount={0.01}
         direction="left"
+        curveAmount={0.01}
         interactive={true}
         containerClassName="curved-loop"
         marqueeText="A ✦ Designer ✦ who ✦ loves ✦ creating ✦ immersive ✦ experiences"

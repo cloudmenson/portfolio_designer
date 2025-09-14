@@ -5,12 +5,17 @@ import gsap from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import illustation from "@/shared/assets/png/blog-girl.png";
+import { cn } from "@/lib/utils";
 import { ContactForm } from "@/shared/ui/contact-form";
+import illustation from "@/shared/assets/png/blog-girl.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Contact = () => {
+interface IContact {
+  className?: string;
+}
+
+export const Contact = ({ className }: IContact) => {
   const imageRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
@@ -33,18 +38,20 @@ export const Contact = () => {
     );
   }, []);
 
+  const mainClass = cn("relative w-full h-full mx-auto max-w-7xl px-5 sm:px-15", className);
+
   return (
-    <section id="contact-section" className="relative w-full h-full lg:pb-40">
-      <div className="flex flex-row items-start gap-20">
-        <div className="flex flex-col gap-2 basis-3/5">
-          <h2 className="mb-8 md:mb-10 flex items-end text-3xl leading-none uppercase md:text-6xl font-extrabold tracking-tight text-white">
+    <section id="contact-section" className={mainClass}>
+      <div className="flex flex-col 2xl:flex-row items-start gap-20">
+        <div className="flex flex-col w-full 2xl:gap-2 2xl:basis-3/5">
+          <h2 className="mb-8 md:mb-10 flex items-end text-3xl leading-none uppercase md:text-7xl font-extrabold tracking-tight text-white">
             Ring a bell!
           </h2>
 
           <ContactForm />
         </div>
 
-        <div className="basis-3/5">
+        <div className="hidden 2xl:block basis-3/5">
           <Image
             alt="Error"
             ref={imageRef}

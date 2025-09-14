@@ -144,7 +144,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     >
       <svg
         viewBox="0 0 1440 120"
-        className="select-none w-full overflow-visible block aspect-[100/12] text-[2em] font-bold uppercase leading-none"
+        className="select-none w-full overflow-visible block aspect-[100/12] font-bold uppercase leading-none text-[5em] sm:text-[2em]"
       >
         <text
           ref={measureRef}
@@ -163,6 +163,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
             stroke="transparent"
           />
         </defs>
+
         {ready && (
           <text xmlSpace="preserve" className={`fill-white ${className ?? ""}`}>
             <textPath

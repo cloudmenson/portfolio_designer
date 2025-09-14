@@ -21,7 +21,7 @@ export default function AboutPage() {
 
       <Header setOpenModal={setOpenModal} />
 
-      <main className="relative mb-20">
+      <main className="relative mt-30 mb-20 md:mt-20">
         <About imageSrc={test} />
 
         <MainModal

@@ -12,10 +12,10 @@ interface IHeader {
 export const Header = ({ setOpenModal }: IHeader) => {
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-white/8 bg-transparent backdrop-blur-sm">
-      <div className="relative flex items-center justify-between px-5 sm:px-15 py-4">
+      <div className="relative flex items-center justify-between px-5 py-4 sm:px-15">
         <Link
           href="/"
-          className="text-base uppercase tracking-widest text-[#808080] transition-colors duration:200 hover:text-white"
+          className="text-xs sm:text-base uppercase tracking-widest text-[#808080] transition-colors duration:200 hover:text-white"
         >
           Home/
         </Link>

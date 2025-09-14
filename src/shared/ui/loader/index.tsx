@@ -40,7 +40,7 @@ export const Loader = ({ isVisible, setIsVisible }) => {
         yPercent: -50,
         borderRadius: "50%",
         position: "absolute",
-        backgroundColor: "rgb(24,4,64)",
+        backgroundColor: "#330986e9",
       });
 
       gsap.to(drop, {

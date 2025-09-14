@@ -25,23 +25,23 @@ export const SocialLinks = ({
   socialLinks,
 }: ISocialLinks) => {
   const mainClass = cn(
-    "flex flex-col gap-10 text-2xl font-bold uppercase",
+    "flex flex-col gap-10 font-bold uppercase",
     className
   );
 
   return (
     <div className={mainClass}>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 items-center">
         <p className="text-base text-[#808080]">{isLabel && "Follow me"}</p>
 
-        <div className="flex flex-row gap-10">
+        <div className="flex flex-col items-center gap-3 md:gap-10 md:flex-row">
           {socialLinks.map((s) => (
             <Link
               key={s.id}
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:scale-[1.08] active:scale-[0.95] transition duration:300 uppercase flex items-center gap-1 lg:text-3xl"
+              className="hover:scale-[1.08] active:scale-[0.95] transition duration:300 uppercase flex gap-1 lg:text-3xl"
             >
               {s.name} <ArrowUpRight className="w-[20px] h-[20px]" />
             </Link>
@@ -50,7 +50,7 @@ export const SocialLinks = ({
       </div>
 
       {email && (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 items-center">
           <p className="text-base text-grey text-[#808080]">
             {isLabel && "Mail me"}
           </p>

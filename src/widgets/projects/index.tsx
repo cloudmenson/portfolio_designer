@@ -4,13 +4,18 @@ import { useRef, useMemo, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { cn } from "@/lib/utils";
 import { Card } from "@/shared/ui/cards/card";
-import { projects, IProjects } from "@/shared/data/projects";
+import { IProjects } from "@/shared/data/projects";
 
 export const PortfolioGrid = ({
-  items = projects,
+  title,
+  items,
+  className,
 }: {
-  items?: IProjects[];
+  title: string;
+  className?: string;
+  items: IProjects[];
 }) => {
   const root = useRef<HTMLDivElement | null>(null);
 
@@ -21,8 +26,8 @@ export const PortfolioGrid = ({
       const cards = gsap.utils.toArray<HTMLDivElement>("[data-card]");
 
       gsap.set(cards, {
-        opacity: 0,
         y: 40,
+        opacity: 0,
         rotateX: -6,
         transformOrigin: "50% 100%",
       });
@@ -32,12 +37,12 @@ export const PortfolioGrid = ({
         once: true,
         onEnter: (batch) =>
           gsap.to(batch as gsap.DOMTarget[], {
-            opacity: 1,
             y: 0,
+            opacity: 1,
             rotateX: 0,
             duration: 0.9,
-            ease: "power3.out",
             stagger: 0.08,
+            ease: "power3.out",
           }),
       });
 
@@ -50,10 +55,12 @@ export const PortfolioGrid = ({
 
         const qx = gsap.quickTo(media, "x", { duration: 0.4, ease: "power3" });
         const qy = gsap.quickTo(media, "y", { duration: 0.4, ease: "power3" });
+
         const tiltX = gsap.quickTo(card, "rotateX", {
           duration: 0.5,
           ease: "power2",
         });
+
         const tiltY = gsap.quickTo(card, "rotateY", {
           duration: 0.5,
           ease: "power2",
@@ -111,19 +118,21 @@ export const PortfolioGrid = ({
     return () => ctx.revert();
   }, [grouped]);
 
+  const mainClass = cn("relative mx-auto max-w-7xl px-5 sm:px-15", className);
+
   return (
     <section
       ref={root}
       id="projects-section"
-      className="relative mx-auto max-w-7xl lg:pt-60 lg:pb-28 px-15"
+      className={mainClass}
     >
       <h2 className="mb-8 md:mb-10 flex items-end text-3xl leading-none uppercase md:text-7xl max-w-xs font-extrabold tracking-tight text-white">
-        Latest portfolio
+        {title}
       </h2>
 
       <div
         data-grid
-        className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px] md:auto-rows-[260px]"
+        className="grid gap-6 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px] md:auto-rows-[260px]"
       >
         {grouped.map((it) => (
           <Card key={it.id} item={it} />

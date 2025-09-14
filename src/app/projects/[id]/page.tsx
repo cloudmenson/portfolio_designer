@@ -31,13 +31,15 @@ export default function ProjectByIdPage({ params }) {
 
       <Header setOpenModal={setOpenModal} />
 
-      <ProjectById projectData={projectData} />
+      <main className="relative mt-30 mb-20 md:mt-40">
+        <ProjectById projectData={projectData} />
 
-      <MainModal
-        open={openModal}
-        items={navItems}
-        onClose={() => setOpenModal(false)}
-      />
+        <MainModal
+          open={openModal}
+          items={navItems}
+          onClose={() => setOpenModal(false)}
+        />
+      </main>
     </>
   );
 }

@@ -3,7 +3,11 @@
 import ScrollFloat from "@/shared/ui/scroll-float";
 import Link from "next/link";
 
-export const Footer = () => {
+interface IFooter {
+  className?: string;
+}
+
+export const Footer = ({ className }: IFooter) => {
   return (
     <div
       aria-label="Footer"

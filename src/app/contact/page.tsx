@@ -24,8 +24,8 @@ export default function ContactPage() {
 
       <Header setOpenModal={setOpenModal} />
 
-      <main className="relative mb-10 mx-auto max-w-7xl py-20 lg:pt-40 px-15">
-        <Contact />
+      <main className="relative mt-30 mb-20 md:mt-40">
+        <Contact className="mb-15" />
 
         <SocialLinks
           isLabel

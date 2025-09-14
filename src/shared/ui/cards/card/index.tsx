@@ -19,7 +19,7 @@ export const Card = ({ item }: { item: Item }) => {
 
   const spans = cn(
     item.span === "big" && "sm:col-span-2 lg:col-span-2 lg:row-span-2",
-    item.span === "v2" && "row-span-2",
+    item.span === "v2" && "sm:row-span-2",
     item.span === "h2" && "sm:col-span-2"
   );
 

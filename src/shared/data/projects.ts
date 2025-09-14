@@ -29,7 +29,7 @@ export const projects: IProjects[] = [
     title: "Motion Landing",
   },
   { id: 3, title: "E‑commerce", tag: "Web", cover: test3 },
-  { id: 4, title: "3D Shot", tag: "3D", cover: test4, span: "h2" },
+  { id: 4, title: "3D Shot", tag: "3D", cover: test4 },
   { id: 5, title: "Mobile App", tag: "iOS", cover: test1 },
   { id: 6, title: "Illustrations", tag: "Art", cover: test2 },
   {
