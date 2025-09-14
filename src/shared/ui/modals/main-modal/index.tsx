@@ -49,6 +49,8 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
         )
         .to(content, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.4);
 
+      document.body.style.overflow = "hidden";
+
       const onEsc = (e: KeyboardEvent) => {
         if (e.key === "Escape") onClose();
       };
@@ -76,6 +78,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
             onComplete: () => {
               if (backdropRef.current)
                 backdropRef.current.style.pointerEvents = "none";
+              document.body.style.overflow = "";
             },
           },
           0
@@ -96,7 +99,7 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
         aria-label="Navigation"
         className="fixed inset-0 h-screen w-full z-[61] bg-black/90 backdrop-blur-xl"
       >
-        <div className="absolute inset-0 w-full h-full -z-10">
+        <div className="absolute inset-0 w-full h-screen -z-10">
           <DarkVeil />
         </div>
 
