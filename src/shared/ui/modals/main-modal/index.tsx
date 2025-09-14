@@ -96,14 +96,14 @@ export const MainModal = ({ open, onClose, items }: MainModalProps) => {
         aria-label="Navigation"
         className="fixed inset-0 h-screen w-full z-[61] bg-black/90 backdrop-blur-xl"
       >
+        <div className="absolute inset-0 w-full h-full -z-10">
+          <DarkVeil />
+        </div>
+
         <div
           ref={contentRef}
-          className="flex flex-col justify-between items-center w-full h-full pt-4 pb-10 px-15"
+          className="flex flex-col justify-between items-center w-full h-full pt-4 pb-10 px-5 sm:px-15"
         >
-          <div className="absolute inset-0 w-full h-full">
-            <DarkVeil />
-          </div>
-
           <div className="relative flex items-center justify-between w-full">
             <Link
               href="/"
