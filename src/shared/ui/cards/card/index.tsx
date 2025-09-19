@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image, { StaticImageData } from "next/image";
 
 import { cn } from "@/shared/lib/utils/cn";
@@ -15,7 +16,8 @@ type Item = {
 };
 
 export const Card = ({ item }: { item: Item }) => {
-  const ref = useRef<HTMLAnchorElement | null>(null);
+  const ref = useRef(null);
+  const pathname = usePathname();
 
   const spans = cn(
     item.span === "big" && "sm:col-span-2 lg:col-span-2 lg:row-span-2",
@@ -23,19 +25,8 @@ export const Card = ({ item }: { item: Item }) => {
     item.span === "h2" && "sm:col-span-2"
   );
 
-  return (
-    <Link
-      data-card
-      ref={ref}
-      data-tag={item.tag}
-      href={`projects/${item.id}`}
-      className={cn(
-        "group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10",
-        "backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]",
-        "cursor-pointer select-none will-change-transform",
-        spans
-      )}
-    >
+  const cardContent = (
+    <>
       <div data-media className="absolute inset-0">
         <Image
           fill
@@ -64,6 +55,37 @@ export const Card = ({ item }: { item: Item }) => {
       </div>
 
       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 ring-emerald-400/0 group-hover:ring-2 group-hover:ring-emerald-400/40 transition-all" />
+    </>
+  );
+
+  return pathname === `/projects/${item.id}` ? (
+    <div
+      data-card
+      ref={ref}
+      data-tag={item.tag}
+      className={cn(
+        "group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10",
+        "backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]",
+        "cursor-default select-none will-change-transform",
+        spans
+      )}
+    >
+      {cardContent}
+    </div>
+  ) : (
+    <Link
+      data-card
+      ref={ref}
+      data-tag={item.tag}
+      href={`projects/${item.id}`}
+      className={cn(
+        "group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10",
+        "backdrop-blur-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]",
+        "cursor-pointer select-none will-change-transform",
+        spans
+      )}
+    >
+      {cardContent}
     </Link>
   );
 };
